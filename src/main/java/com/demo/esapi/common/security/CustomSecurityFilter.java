@@ -30,7 +30,7 @@ public class CustomSecurityFilter extends GenericFilterBean implements Filter {
 			HttpServletRequest httpRequest = (HttpServletRequest) request;
 			HttpServletResponse httpResponse= (HttpServletResponse) response;
 			
-			SecureHttpRequest secureRequest = buiildSecureRequest( httpRequest);
+			SecureHttpRequest secureRequest = buildSecureRequest( httpRequest);
 			ESAPI.httpUtilities().setCurrentHTTP(httpRequest, httpResponse);
 			chain.doFilter(secureRequest, httpResponse);
 		} catch (Exception e) {
@@ -41,11 +41,11 @@ public class CustomSecurityFilter extends GenericFilterBean implements Filter {
 		}
 	}
 
-	protected SecureHttpRequest buiildSecureRequest(HttpServletRequest httpRequest ){
+	protected SecureHttpRequest buildSecureRequest(HttpServletRequest httpRequest ){
 		return new SecureHttpRequest(httpRequest,parameterValidator);
 	}
 	
-	protected SecureHttpResponse buiildSecureResponse(HttpServletResponse httpResponse ){
+	protected SecureHttpResponse buildSecureResponse(HttpServletResponse httpResponse ){
 		return new SecureHttpResponse(httpResponse);
 	}
 }
